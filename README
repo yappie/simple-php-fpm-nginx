@@ -1,0 +1,18 @@
+This creates /home/http directory that will serve PHP-enabled sites (currently for *Ubuntu* ONLY).
+
+For example:
+
+    /home/http/test.local/www/index.php
+
+becomes
+
+   http://test.local/
+
+Path mangling pre-enabled for all hosts, so any non-file will be routed to index.php (URL rewriting).
+
+To install run:
+
+    sudo wget https://github.com/yappie/simple-php-fpm-nginx/raw/master/nginx.py -O /bin/nginx.py
+
+Then create directories in `/home/http/` as `domain/subdomain` and run `nginx.py` (it will request sudo password to install nginx/php-fpm/mysql).
+
