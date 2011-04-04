@@ -1,4 +1,4 @@
-This creates `/home/http` directory that will serve PHP-enabled sites (currently for *Ubuntu* ONLY).
+This creates `/home/http` directory that will serve PHP-enabled sites via pre-configured nginx and php-fpm (currently for *Ubuntu* ONLY).
 
 For example:
 
