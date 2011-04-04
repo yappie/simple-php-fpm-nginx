@@ -10,7 +10,7 @@ becomes
 
 Path mangling pre-enabled for all hosts, so any non-file will be routed to index.php (URL rewriting).
 
-To install run:
+To install run (from Terminal via Ctrl + Alt + T):
 
     sudo sh -c "wget --no-check-certificate \
     https://github.com/yappie/simple-php-fpm-nginx/raw/master/nginx.py \
