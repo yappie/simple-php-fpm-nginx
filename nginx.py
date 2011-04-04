@@ -74,8 +74,6 @@ def install_nginx():
     os.system('sudo chkconfig nginx on')
     os.system('sudo chkconfig mysql on 2>/dev/null')
     os.system('sudo chkconfig php5-fpm on')
-    #if not os.path.exists('/bin/nginx.py'):
-    #    os.system('sudo ln -s /home/bomboze/http/nginx.py /bin/')
 
 def restart_nginx():
     os.system('sudo /etc/init.d/nginx restart')
