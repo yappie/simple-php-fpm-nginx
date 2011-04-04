@@ -12,7 +12,7 @@ Path mangling pre-enabled for all hosts, so any non-file will be routed to index
 
 To install run:
 
-    sudo wget https://github.com/yappie/simple-php-fpm-nginx/raw/master/nginx.py -O /bin/nginx.py
+    sudo wget --no-check-certificate https://github.com/yappie/simple-php-fpm-nginx/raw/master/nginx.py -O /bin/nginx.py
 
 Then create directories in `/home/http/` as `domain/subdomain` and run `nginx.py` (it will request sudo password to install nginx/php-fpm/mysql).
 
