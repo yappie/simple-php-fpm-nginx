@@ -37,11 +37,11 @@ server {
 def add_to_etc_hosts(domain):
     with open('/etc/hosts', 'r') as f:
         hosts_txt = f.read()
-    
+
     hosts_line = '127.0.0.1  %s  # local-http\n' % domain
     assert "'" not in hosts_line
     assert '"' not in hosts_line
-    
+
     if hosts_line not in hosts_txt:
         os.system('echo \'%s\' | sudo tee -a /etc/hosts' % hosts_line)
 
@@ -64,11 +64,11 @@ def create_host(wwwdir):
         f.write(template)
 
     os.system('sudo cp /tmp/1 /etc/nginx/sites-enabled/' + domain_w_sub)
-    
+
     os.unlink('/tmp/1')
 
     add_to_etc_hosts(domain)
-    
+
 def install_nginx():
     print "Installing nginx/mysql if needed..."
     os.system('sudo apt-get -qq -y install nginx php5-fpm mysql-server chkconfig')
@@ -86,8 +86,11 @@ def create_http_dir(director):
         os.system('sudo chown -R %s:%s %s' % (os.getlogin(), os.getgroups()[0], directory))
         os.system('chmod a+r ' + directory)
         os.system('chmod a+x ' + directory)
+
+    if not os.path.exists(os.path.join(directory, 'test.local'')):
         with open(os.path.join(directory, 'test.local/www/index.php'), 'w') as f:
-            f.write('<?php print "That\'s it!";')
+            f.write('<?php\nprint "That\'s it, this was written by PHP!";')
+        print "You can now navigate to http://test.local/ and see that PHP works"
 
 def iter_hosts():
     all_dirs = glob.glob(os.path.join(directory, '*'))
@@ -99,7 +102,7 @@ def iter_hosts():
 if os.getuid() == 0:
     print "No need to run as root"
     sys.exit(1)
-    
+
 directory = '/home/http/'
 
 install_nginx()
