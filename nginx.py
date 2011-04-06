@@ -43,7 +43,7 @@ def add_to_etc_hosts(domain):
     assert '"' not in hosts_line
     
     if hosts_line not in hosts_txt:
-        os.system('echo \'%s\' >> /etc/hosts' % hosts_line)
+        os.system('echo \'%s\' | sudo tee -a /etc/hosts' % hosts_line)
 
 def create_host(wwwdir):
     wwwdir = re.sub('/$', '', wwwdir)
@@ -70,7 +70,8 @@ def create_host(wwwdir):
     add_to_etc_hosts(domain)
     
 def install_nginx():
-    os.system('sudo apt-get -q -y install nginx php5-fpm mysql-server')
+    print "Installing nginx/mysql if needed..."
+    os.system('sudo apt-get -qq -y install nginx php5-fpm mysql-server chkconfig')
     os.system('sudo chkconfig nginx on')
     os.system('sudo chkconfig mysql on 2>/dev/null')
     os.system('sudo chkconfig php5-fpm on')
