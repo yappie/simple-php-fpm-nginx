@@ -87,7 +87,7 @@ def create_http_dir(director):
         os.system('chmod a+r ' + directory)
         os.system('chmod a+x ' + directory)
 
-    if not os.path.exists(os.path.join(directory, 'test.local'')):
+    if not os.path.exists(os.path.join(directory, 'test.local')):
         with open(os.path.join(directory, 'test.local/www/index.php'), 'w') as f:
             f.write('<?php\nprint "That\'s it, this was written by PHP!";')
         print "You can now navigate to http://test.local/ and see that PHP works"
