@@ -5,6 +5,14 @@ import os
 import sys
 import glob
 
+# display_errors = On
+# display_startup_errors = On
+# html_errors = On
+# error_reporting = E_ALL & ~E_DEPRECATED  ->  error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE
+
+# php5-gd
+# php5-curl
+
 nginx_template = """
 server {
     listen   80;
@@ -16,7 +24,7 @@ server {
         set $host_without_www $1;
         rewrite ^(.*)$ http://$host_without_www$1 permanent;
     }
-    location ~ \.php$ {
+    location ~ ^(?<script>.+\.php)(?<path_info>.*)$ { # http://forum.nginx.org/read.php?2,88845,page=3
         root           [WWWDIR];
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME [WWWDIR]$fastcgi_script_name;
