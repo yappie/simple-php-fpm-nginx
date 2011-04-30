@@ -1,3 +1,6 @@
+Simple installer of PHP-FPM and nginx (with directory layout) for Ubuntu
+========================================================================
+
 This creates `/home/http` directory that will serve PHP-enabled sites via pre-configured `nginx` and `php-fpm` (currently for *Ubuntu* ONLY).
 
 For example:
